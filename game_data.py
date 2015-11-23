@@ -44,12 +44,24 @@ class Location:
 
     def get_description(self):
         """Return a description of the location depending on if the lactation has been visited or not"""
-        if self.visited:                        # if the location has been visited
-            return self.brief_description       # print the short description
+        if self.visited:                                                    # if the location has been visited
+            return self.brief_description + "\n" + self.show_items()        # print the short description
         else:
             self.visited = True
-            return self.long_description        # else print long description
+            return self.long_description + "\n" + self.show_items()         # else print long description
 
+    def show_items(self):
+        """Return a description of all the items in a location"""
+        if len(self.items) > 0:
+            string = "You can see "
+
+            for item in self.items:
+                string += "\n" + item.get_name()
+
+        else:
+            string = "You don't see anything useful"
+
+        return string
 
     def available_actions(self):
         '''
@@ -58,7 +70,7 @@ class Location:
         The list of actions should depend on the items available in the location
         and the x,y position of this location on the world map.
         '''
-        action_text =""
+        action_text = ""
         action_list = []
 
         for action in self.available_moves:
@@ -322,4 +334,12 @@ my_world = World()
 location = my_world.get_location(1, 2)
 print(location.available_actions())
 """
+
+"""
+testing items
+my_world = World()
+location = my_world.get_location(1, 3)
+print(location.show_items())
+"""
+
 

@@ -20,7 +20,7 @@ def parse(raw_input, directions, actions):
     # directions = ['north', 'south', 'east', 'west']
     list_text = raw_input.split(" ", 3)
 
-    if list_text[0] == "move":                  # the move command
+    if list_text[0] == "move" or "go":                  # the move command
 
         if len(list_text) >= 2:                 # if the command is the right length
 
@@ -46,7 +46,7 @@ def do_action(World, player, location, action):
 
     command = parse(action, location.available_moves, [])
 
-    if command[0] == "move":        # if it is a move command
+    if command[0] == "move" or "go":        # if it is a move command
         if command[1] == "north":
             player.move_north()
             return "You move north"
@@ -128,7 +128,7 @@ if __name__ == "__main__":
             print(action)
         choice = input("\nEnter action: ")
 
-        if (choice == "[menu]"):                                   # if it is a menu action
+        if choice == "[menu]":                                   # if it is a menu action
             use_menu()
 
         else:
