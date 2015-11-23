@@ -2,7 +2,7 @@ from game_data import World, Item, Location
 from player import Player
 
 
-def parse(raw_input, directions, actions):
+def parse(raw_input, directions, items):
     """
     Takes in raw user input, possible directions and actions and spits out something the computer can execute
     :param raw_input: raw user input
@@ -20,7 +20,7 @@ def parse(raw_input, directions, actions):
     # directions = ['north', 'south', 'east', 'west']
     list_text = raw_input.split(" ", 3)
 
-    if list_text[0] == "move" or "go":                  # the move command
+    if list_text[0] == "move" or "go":          # the move command
 
         if len(list_text) >= 2:                 # if the command is the right length
 
@@ -30,6 +30,22 @@ def parse(raw_input, directions, actions):
                 return ['error', 'You cannot move ' + list_text[1]]    # return an in valid direction
         else:
             return ['error', 'Be more specific. Move where?']
+
+    elif list_text[0] == "take":                            # the take command
+
+        if len(list_text) >= 2:                             # if the command is the right length
+
+            item = location.get_item(list_text[1])          # get the item in that location
+
+            if item:                                        # if there is an item at that location
+                return item
+
+            else:
+                return ['error', 'That item doesnt exist']  # return if the item doesn't exist
+
+        else:
+            return ['error', 'Be more specific. take what?']   # return if the command is incomplete
+
     else:
         return ['error', 'You cannot do ' + list_text[0]]          # return an invalid command
 
@@ -65,6 +81,12 @@ def do_action(World, player, location, action):
 
     if command[0] == "error":
         return command[1]
+
+    if command[0] == "take":
+
+
+        PLAYER.add_item(item)           # add item to the inventory and remove it from the world
+                location.items.remove(item)
 
 
 def use_menu():

@@ -63,6 +63,33 @@ class Location:
 
         return string
 
+    def get_items_list(self):
+        """Return a description of all the items in a location in a list"""
+        if len(self.items) > 0:
+            item_list = []
+
+            for item in self.items:
+                item_list.append(item.get_name())
+
+        else:
+            return False
+
+        return item_list
+
+    def get_item(self, item_name):
+        """
+        takes an item name and gets back the item if it exists else return false
+        :param item_name: the name of an item
+        :return: return the item if it is present and False if not
+        """
+        if len(self.items) > 0:                         # if there is at least one item in that location
+            for element in self.items:
+                if element.get_name() == item_name:
+                    return element
+            return False
+        else:
+            return False
+
     def available_actions(self):
         '''
         -- Suggested Method (You may remove/modify/rename this as you like) --
@@ -79,7 +106,6 @@ class Location:
             action_text = ""
 
         return action_list
-
 
 
 class Item:
@@ -129,7 +155,7 @@ class Item:
         """
         :return:the string representation of the item
         """
-        string = "name {0}, start_area {1}, target_area {2}, target_points{3}".format(self.get_name(),
+        string = "name {0}, start_area {1}, target_area {2}, target_points {3}".format(self.get_name(),
                                                                                       self.get_starting_location(),
                                                                                       self.get_target_location(),
                                                                                       self.get_target_points())
@@ -340,6 +366,13 @@ testing items
 my_world = World()
 location = my_world.get_location(1, 3)
 print(location.show_items())
+"""
+
+"""
+# testing get_item
+my_world = World()
+location = my_world.get_location(1, 2)
+print(location.get_item("food"))
 """
 
 
