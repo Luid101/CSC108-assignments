@@ -100,25 +100,30 @@ def do_action(World, player, location, action):
             return "You move west."
 
     elif tag == "error":
-        return command[1]
+        return command[1] + "."
 
     elif tag == "take":
         PLAYER.add_item(command[1])           # add item to the inventory and remove it from the world
         location.items.remove(command[1])
-        return "you took the " + command[1].get_name()
+        return "you took the " + command[1].get_name() + "."
 
     elif tag == "drop":
         location.items.append(command[1])       # add item to the world and remove it from the inventory
         PLAYER.remove_item(command[1])
-        return "you dropped the " + command[1].get_name()
+
+        score_change = score(PLAYER, location, command[1])  # score player every time player drops the right item
+        if score_change > 0:                                # in the right place
+            print("You gained " + str(score_change) + " points for dropping " + command[1].get_name() + " here...")
+
+        return "you dropped the " + command[1].get_name() + "."
 
     elif tag == "inventory":                    # open up the inventory
         if len(PLAYER.get_inventory()) == 2:
-            return "You have " + " and ".join(PLAYER.get_inventory())
+            return "You have " + " and ".join(PLAYER.get_inventory()) + "."
         elif len(PLAYER.get_inventory()) > 0:
-            return "You have " + ", ".join(PLAYER.get_inventory())
+            return "You have " + ", ".join(PLAYER.get_inventory()) + "."
         else:
-            return "You don't have anything in your inventory"
+            return "You don't have anything in your inventory."
 
 
 def score(player, location, item):
@@ -179,7 +184,7 @@ def use_menu():
     if user_choice in menu:                     # handle only choices that are in the menu
 
         if user_choice == "look":               # look around
-            print(location.get_description())
+            print("\n" + location.get_description() + "\n")
 
         elif user_choice == "score":
             print("\nScore: " + str(PLAYER.score))    # display players score
