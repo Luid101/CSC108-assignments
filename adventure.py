@@ -21,7 +21,10 @@ def parse(raw_input, directions, items):
     list_text = raw_input.split(" ", 1)
     tag = list_text[0]
 
-    if tag == "move" or tag == "go":          # the move command
+    if tag == "inventory":                    # parse the inventory command
+        return [tag, ""]
+
+    elif tag == "move" or tag == "go":          # the move command
 
         if len(list_text) >= 2:                 # if the command is the right length
 
@@ -32,7 +35,7 @@ def parse(raw_input, directions, items):
         else:
             return ['error', 'Be more specific. Move where?']
 
-    if tag == "take":                            # the take command
+    elif tag == "take":                            # the take command
 
         if len(list_text) >= 2:                             # if the command is the right length
 
@@ -62,8 +65,9 @@ def do_action(World, player, location, action):
     """
 
     command = parse(action, location.available_moves, [])
+    tag = command[0]
 
-    if command[0] == "move" or "go":        # if it is a move command
+    if tag == 'move' or tag == 'go':        # if it is a move command
         if command[1] == "north":
             player.move_north()
             return "You move north"
@@ -80,13 +84,21 @@ def do_action(World, player, location, action):
             player.move_west()
             return "You move west"
 
-    if command[0] == "error":
+    elif tag == "error":
         return command[1]
 
-    if command[0] == "take":
+    elif tag == "take":
         PLAYER.add_item(command[1])           # add item to the inventory and remove it from the world
         location.items.remove(command[1])
         return "you took the " + command[1].get_name()
+
+    elif tag == "inventory":               # open up the inventory
+        if len(PLAYER.get_inventory()) == 2:
+            return "You have " + " and ".join(PLAYER.get_inventory())
+        elif len(PLAYER.get_inventory()) > 0:
+            return "You have " + ", ".join(PLAYER.get_inventory())
+        else:
+            return "You don't have anything in your inventory"
 
 
 def use_menu():
@@ -116,9 +128,6 @@ def use_menu():
         if user_choice == "look":               # look around
             print(location.get_description())
 
-        elif user_choice == "inventory":        # open up the inventory
-            print(PLAYER.get_inventory())
-
         elif user_choice == "back":             # exit menu
             print("menu closed")
             return
@@ -134,7 +143,7 @@ if __name__ == "__main__":
     WORLD = World("map.txt", "locations.txt", "items.txt")
     PLAYER = Player(1, 1)    # set starting location of player; you may change the x, y coordinates here as appropriate
 
-    menu = ["look", "inventory", "score", "quit", "back"]
+    menu = ["look", "score", "quit", "back"]
 
     while not PLAYER.victory:
         location = WORLD.get_location(PLAYER.x, PLAYER.y)
@@ -146,11 +155,12 @@ if __name__ == "__main__":
 
         print("\nWhat to do?")
         print("[menu]")
+        print("[inventory]")                     # allow you to show the inventory outside of the menu
         for action in location.available_actions():
             print(action)
         choice = input("\nEnter action: ")
 
-        if choice == "[menu]":                                   # if it is a menu action
+        if choice == "menu":                                   # if it is a menu action
             use_menu()
 
         else:
