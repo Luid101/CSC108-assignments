@@ -218,9 +218,10 @@ if __name__ == "__main__":
         #   print either full description (first time visit) or brief description (every subsequent visit)
         print(location.get_description())    # choice of full and brief description is handled inside the location class
 
-        print("\nWhat to do?")
+        print("\nPossible actions: ")
         print("[menu]")
         print("[inventory]")                 # allow you to show the inventory outside of the menu
+        print("take [item]")
         for action in location.available_actions():
             print(action)
         choice = input("\nEnter action: ")
