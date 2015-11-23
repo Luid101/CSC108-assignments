@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5fba0a2c-e800-4af5-9e57-b6e562a0ef1a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure.py" afterPath="$PROJECT_DIR$/adventure.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="a3.iws" />
@@ -67,8 +68,8 @@
       <file leaf-file-name="adventure.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/adventure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.544554">
-              <caret line="156" column="21" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
+            <state vertical-scroll-proportion="1.2346939">
+              <caret line="114" column="48" selection-start-line="114" selection-start-column="48" selection-end-line="114" selection-end-column="48" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -80,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/game_data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
+              <caret line="90" column="24" selection-start-line="78" selection-start-column="4" selection-end-line="90" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -100,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/player.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+              <caret line="83" column="41" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -512,7 +513,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448300651498</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;and look at inventory&#10;but cannot drop items &#10;fixed bugs with picking up items and adding them to inventory&#10;moved inventory out of menu">
+      <created>1448302662742</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1448302662742</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -526,16 +533,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.056368962" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4929134" sideWeight="0.50292826" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.073529415" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.028346457" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16062993" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4929134" sideWeight="0.49707174" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -566,7 +573,8 @@
     <MESSAGE value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;semi-done the pickup and drop items part&#10;" />
     <MESSAGE value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;but cannot drop items or look at inventory&#10;" />
     <MESSAGE value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;and look at inventory&#10;but cannot drop items &#10;fixed bugs with picking up items and adding them to inventory&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;and look at inventory&#10;but cannot drop items &#10;fixed bugs with picking up items and adding them to inventory&#10;" />
+    <MESSAGE value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;and look at inventory&#10;but cannot drop items &#10;fixed bugs with picking up items and adding them to inventory&#10;moved inventory out of menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;and look at inventory&#10;but cannot drop items &#10;fixed bugs with picking up items and adding them to inventory&#10;moved inventory out of menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -969,7 +977,7 @@
     <entry file="file://$PROJECT_DIR$/game_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
+          <caret line="90" column="24" selection-start-line="78" selection-start-column="4" selection-end-line="90" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -977,15 +985,15 @@
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+          <caret line="83" column="41" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adventure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.544554">
-          <caret line="156" column="21" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
+        <state vertical-scroll-proportion="1.2346939">
+          <caret line="114" column="48" selection-start-line="114" selection-start-column="48" selection-end-line="114" selection-end-column="48" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>

@@ -2,7 +2,7 @@ from game_data import World, Item, Location
 from player import Player
 
 
-def parse(raw_input, directions, items):
+def parse(raw_input, directions, location):
     """
     Takes in raw user input, possible directions and actions and spits out something the computer can execute
     :param raw_input: raw user input
@@ -21,7 +21,7 @@ def parse(raw_input, directions, items):
     list_text = raw_input.split(" ", 1)
     tag = list_text[0]
 
-    if tag == "inventory":                    # parse the inventory command
+    if tag == "inventory":                      # parse the inventory command
         return [tag, ""]
 
     elif tag == "move" or tag == "go":          # the move command
@@ -50,6 +50,21 @@ def parse(raw_input, directions, items):
         else:
             return ['error', 'Be more specific. take what?']   # return if the command is incomplete
 
+    elif tag == "drop":                            # the drop command
+
+        if len(list_text) >= 2:                             # if the command is the right length
+
+            item = PLAYER.get_item(list_text[1])          # get the item in the players inventory
+
+            if item:                                        # if there is an item in players inventory
+                return [tag, item]
+
+            else:
+                return ['error', 'That item doesnt exist']  # return if the item doesn't exist
+
+        else:
+            return ['error', 'Be more specific. drop what?']   # return if the command is incomplete
+
     else:
         return ['error', 'You cannot do ' + list_text[0]]          # return an invalid command
 
@@ -64,7 +79,7 @@ def do_action(World, player, location, action):
     :return: the result of that action
     """
 
-    command = parse(action, location.available_moves, [])
+    command = parse(action, location.available_moves, location)
     tag = command[0]
 
     if tag == 'move' or tag == 'go':        # if it is a move command
@@ -92,7 +107,12 @@ def do_action(World, player, location, action):
         location.items.remove(command[1])
         return "you took the " + command[1].get_name()
 
-    elif tag == "inventory":               # open up the inventory
+    elif tag == "drop":
+        location.items.append(command[1])       # add item to the world and remove it from the inventory
+        PLAYER.remove_item(command[1])
+        return "you dropped the " + command[1].get_name()
+
+    elif tag == "inventory":                    # open up the inventory
         if len(PLAYER.get_inventory()) == 2:
             return "You have " + " and ".join(PLAYER.get_inventory())
         elif len(PLAYER.get_inventory()) > 0:

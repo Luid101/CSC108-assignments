@@ -73,3 +73,17 @@ class Player:
             inventory.append(item.get_name())
 
         return inventory
+
+    def get_item(self, item_name):
+        """
+        takes an item name and gets back the item if it exists else return false
+        :param item_name: the name of an item
+        :return: return the item if it is present and False if not
+        """
+        if len(self.inventory) > 0:                         # if there is at least one item in that location
+            for element in self.inventory:
+                if element.get_name() == item_name:
+                    return element
+            return False
+        else:
+            return False
