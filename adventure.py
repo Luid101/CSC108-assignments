@@ -18,9 +18,10 @@ def parse(raw_input, directions, items):
 
     """
     # directions = ['north', 'south', 'east', 'west']
-    list_text = raw_input.split(" ", 3)
+    list_text = raw_input.split(" ", 1)
+    tag = list_text[0]
 
-    if list_text[0] == "move" or "go":          # the move command
+    if tag == "move" or tag == "go":          # the move command
 
         if len(list_text) >= 2:                 # if the command is the right length
 
@@ -31,14 +32,14 @@ def parse(raw_input, directions, items):
         else:
             return ['error', 'Be more specific. Move where?']
 
-    elif list_text[0] == "take":                            # the take command
+    if tag == "take":                            # the take command
 
         if len(list_text) >= 2:                             # if the command is the right length
 
             item = location.get_item(list_text[1])          # get the item in that location
 
             if item:                                        # if there is an item at that location
-                return item
+                return [tag, item]
 
             else:
                 return ['error', 'That item doesnt exist']  # return if the item doesn't exist
@@ -83,10 +84,9 @@ def do_action(World, player, location, action):
         return command[1]
 
     if command[0] == "take":
-
-
-        PLAYER.add_item(item)           # add item to the inventory and remove it from the world
-                location.items.remove(item)
+        PLAYER.add_item(command[0])           # add item to the inventory and remove it from the world
+        location.items.remove(command[1])
+        return "you took the " + command[1].get_name()
 
 
 def use_menu():
