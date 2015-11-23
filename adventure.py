@@ -84,7 +84,7 @@ def do_action(World, player, location, action):
         return command[1]
 
     if command[0] == "take":
-        PLAYER.add_item(command[0])           # add item to the inventory and remove it from the world
+        PLAYER.add_item(command[1])           # add item to the inventory and remove it from the world
         location.items.remove(command[1])
         return "you took the " + command[1].get_name()
 

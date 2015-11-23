@@ -67,4 +67,9 @@ class Player:
         :return:
         '''
 
-        return self.inventory
+        inventory = []
+
+        for item in self.inventory:
+            inventory.append(item.get_name())
+
+        return inventory
