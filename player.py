@@ -17,6 +17,7 @@ class Player:
         self.y = y
         self.inventory = []
         self.victory = False
+        self.score = 0
 
     def move(self, dx, dy):
         '''

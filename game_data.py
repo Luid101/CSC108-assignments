@@ -52,16 +52,25 @@ class Location:
 
     def show_items(self):
         """Return a description of all the items in a location"""
-        if len(self.items) > 0:
+        if len(self.items) > 1:
+            string = "You can see "
+
+            item_list = []
+            for item in self.items:
+                item_list.append(item.get_name())
+
+            string += ", ".join(item_list)
+
+        elif len(self.items) == 1:
             string = "You can see "
 
             for item in self.items:
-                string += "\n" + item.get_name()
+                string += item.get_name()
 
         else:
             string = "You don't see anything useful"
 
-        return string
+        return string + "."
 
     def get_items_list(self):
         """Return a description of all the items in a location in a list"""
@@ -130,6 +139,7 @@ class Item:
         self.start = start
         self.target = target
         self.target_points = target_points
+        self.placed = False                     # if the item has been placed in its target location already
 
     def get_starting_location (self):
         '''Return int location where item is first found.'''

@@ -1,7 +1,7 @@
 # The players room/ starting position
 LOCATION 0
 0
-You are still in your room. Your door is to the south
+You are still in your room. Your door is to the south.
 You are in your room. Your room is messy AF. Your door is to the south.
 END
 

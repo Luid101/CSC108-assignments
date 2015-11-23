@@ -85,19 +85,19 @@ def do_action(World, player, location, action):
     if tag == 'move' or tag == 'go':        # if it is a move command
         if command[1] == "north":
             player.move_north()
-            return "You move north"
+            return "You move north."
 
         elif command[1] == "south":
             player.move_south()
-            return "You move south"
+            return "You move south."
 
         elif command[1] == "east":
             player.move_east()
-            return "You move east"
+            return "You move east."
 
         elif command[1] == "west":
             player.move_west()
-            return "You move west"
+            return "You move west."
 
     elif tag == "error":
         return command[1]
@@ -119,6 +119,39 @@ def do_action(World, player, location, action):
             return "You have " + ", ".join(PLAYER.get_inventory())
         else:
             return "You don't have anything in your inventory"
+
+
+def score(player, location, item):
+    """
+    checks if the player should be scored or not depending on if the player has:
+    1) placed an item in the right place
+    2) moved to a new location
+    3) but not both at the same time
+
+    Then gives the player points.
+    This should be called anytime the player moves to a new location or drops an item
+
+    :param player: the player object
+    :param item: an item object, by default the item is False
+    :param location: a location object
+    :return: how many points were given
+    """
+
+    if item:                                    # if there was an item passed through the function
+        if item.target == location.position and item.placed is False:       # if the item is in its target location...
+            item.placed = True                                              # and it has not been placed before
+            player.score += int(item.target_points)                         # gives a player the score
+            return item.target_points                                       # then return a score
+        else:
+            return 0                                                        # else return a score of zero
+
+    elif location.visited is False:              # if we are handling scoring for the location
+        location.visited = True
+        player.score += int(location.visit_points)                           # gives a player the score
+        return location.visit_points
+
+    else:
+        return 0
 
 
 def use_menu():
@@ -148,6 +181,9 @@ def use_menu():
         if user_choice == "look":               # look around
             print(location.get_description())
 
+        elif user_choice == "score":
+            print("\nScore: " + str(PLAYER.score))    # display players score
+
         elif user_choice == "back":             # exit menu
             print("menu closed")
             return
@@ -167,6 +203,10 @@ if __name__ == "__main__":
 
     while not PLAYER.victory:
         location = WORLD.get_location(PLAYER.x, PLAYER.y)
+        score_change = score(PLAYER, location, "")           # score player every time player enters new area
+
+        if int(score_change) > 0:                                # alert the player to point gains > 0
+            print("You gained " + str(score_change) + " points for entering this area... \n")
 
         # ENTER CODE HERE TO PRINT LOCATION DESCRIPTION
         # depending on whether or not it's been visited before,
@@ -175,12 +215,12 @@ if __name__ == "__main__":
 
         print("\nWhat to do?")
         print("[menu]")
-        print("[inventory]")                     # allow you to show the inventory outside of the menu
+        print("[inventory]")                 # allow you to show the inventory outside of the menu
         for action in location.available_actions():
             print(action)
         choice = input("\nEnter action: ")
 
-        if choice == "menu":                                   # if it is a menu action
+        if choice == "menu":                  # if it is a menu action
             use_menu()
 
         else:
