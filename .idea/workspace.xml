@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fba0a2c-e800-4af5-9e57-b6e562a0ef1a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adventure.py" afterPath="$PROJECT_DIR$/adventure.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="a3.iws" />
@@ -494,7 +493,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448297124378</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;but cannot drop items or look at inventory&#10;">
+      <created>1448300281822</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1448300281822</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -546,7 +551,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;" />
     <MESSAGE value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;semi-done the pickup and drop items part&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;semi-done the pickup and drop items part&#10;" />
+    <MESSAGE value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;but cannot drop items or look at inventory&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player can now:&#10;move around a pre-defined location&#10;see all items in that location&#10;Can now pick up items&#10;but cannot drop items or look at inventory&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
