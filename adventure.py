@@ -87,7 +87,7 @@ def do_action(World, player, location, action):
 
         PLAYER.add_item(item)           # add item to the inventory and remove it from the world
                 location.items.remove(item)
-
+            h3jsw
 
 def use_menu():
     """
