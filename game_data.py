@@ -33,6 +33,7 @@ class Location:
         self.available_moves = available_moves
         self.items = items
         self.visited = False
+        self.points_given = False
 
     def get_brief_description (self):
         '''Return str brief description of location.'''

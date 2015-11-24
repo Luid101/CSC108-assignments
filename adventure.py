@@ -66,7 +66,7 @@ def parse(raw_input, directions, location):
             return ['error', 'Be more specific. drop what?']   # return if the command is incomplete
 
     else:
-        return ['error', 'You cannot do ' + list_text[0]]          # return an invalid command
+        return ['error', 'You cannot ' + list_text[0]]          # return an invalid command
 
 
 def do_action(World, player, location, action):
@@ -150,13 +150,24 @@ def score(player, location, item):
         else:
             return 0                                                        # else return a score of zero
 
-    elif location.visited is False:              # if we are handling scoring for the location
-        location.visited = True
+    elif location.points_given is False:              # if we are handling scoring for the location
+        location.points_given = True
         player.score += int(location.visit_points)                           # gives a player the score
         return location.visit_points
 
     else:
         return 0
+
+
+def has_won(target_items, target_location):
+    """
+    checks if the user has won.
+    looks at the
+    :param target_items:
+    :param target_location:
+    :return:
+    """
+
 
 
 def use_menu():
@@ -208,9 +219,10 @@ if __name__ == "__main__":
 
     while not PLAYER.victory:
         location = WORLD.get_location(PLAYER.x, PLAYER.y)
-        score_change = score(PLAYER, location, "")           # score player every time player enters new area
 
-        if int(score_change) > 0:                                # alert the player to point gains > 0
+        score_change = score(PLAYER, location, "")                  # score player every time player enters new area
+
+        if int(score_change) > 0:                                   # alert the player to point gains > 0
             print("You gained " + str(score_change) + " points for entering this area... \n")
 
         # ENTER CODE HERE TO PRINT LOCATION DESCRIPTION

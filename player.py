@@ -18,6 +18,7 @@ class Player:
         self.inventory = []
         self.victory = False
         self.score = 0
+        self.total_moves = 0
 
     def move(self, dx, dy):
         '''
@@ -88,3 +89,12 @@ class Player:
             return False
         else:
             return False
+
+    def add_move(self):
+        """
+        add one to the total number of moves made
+        :return:
+        """
+
+        self.total_moves += 1
+
