@@ -1,7 +1,7 @@
 # The players room/ starting position
 LOCATION 0
 0
-You are still in your room. Your door is to the south
+You are still in your room. Your door is to the south.
 You are in your room. Your room is messy AF. Your door is to the south.
 END
 
@@ -13,6 +13,12 @@ END
 
 LOCATION 2
 5
-You are right behind OPH. The road to campus centre is to the North.
-You are now outside. Oooh look! Some deer! The road to campus centre is to the North.
+You are right behind OPH. The road to campus centre is to the North. To the south you can see the RAWC
+You are now outside. Oooh look! Some deer! The road to campus centre is to the North. To the south you can see the RAWC
+END
+
+LOCATION 3
+5
+You are at your test centre. The road to outside the campus centre is to the south.
+Welcome to the RAWC where unprepared students come to die. This is the test you have been preparing your whole life for. To the south you can see the campus centre.
 END
