@@ -1,4 +1,0 @@
-# FILL THIS IN WITH ITEM DATA
-# initial_location, target_location, points_received, item_name
-0 1 10 5 dollars
-1 0 10 food
