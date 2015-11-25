@@ -17,6 +17,7 @@ You are right behind OPH. The road to campus centre is to the North. To the sout
 You are now outside. Oooh look! Some deer! The road to campus centre is to the North. To the south you can see the RAWC
 END
 
+# The Rawc / end location
 LOCATION 3
 5
 You are at your test centre. The road to outside the campus centre is to the south.

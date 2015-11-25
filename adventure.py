@@ -29,6 +29,7 @@ def parse(raw_input, directions, location):
         if len(list_text) >= 2:                 # if the command is the right length
 
             if list_text[1] in directions:      # if it has the right direction
+                PLAYER.add_move()               # increment time
                 return list_text                # return a valid command
             else:
                 return ['error', 'You cannot move ' + list_text[1]]    # return an in valid direction
@@ -42,6 +43,7 @@ def parse(raw_input, directions, location):
             item = location.get_item(list_text[1])          # get the item in that location
 
             if item:                                        # if there is an item at that location
+                PLAYER.add_move()                           # increment time
                 return [tag, item]
 
             else:
@@ -57,6 +59,7 @@ def parse(raw_input, directions, location):
             item = PLAYER.get_item(list_text[1])          # get the item in the players inventory
 
             if item:                                        # if there is an item in players inventory
+                PLAYER.add_move()                           # increment time
                 return [tag, item]
 
             else:
@@ -161,20 +164,20 @@ def score(player, location, item):
 
 def has_won(target_items, target_location):
     """
-    checks if the user has won.
-    looks at the
-    :param target_items:
-    :param target_location:
-    :return:
+    Checks if the user has won.
+    takes the names of items in the target_items list and checks if target_location has them
+    :param target_items: a list of all target items <string_list>
+    :param target_location: a list of all items in the target location <string_list>
+    :return: True or False depending on if the user has won or not
     """
 
-<<<<<<< HEAD
-        PLAYER.add_item(item)           # add item to the inventory and remove it from the world
-                location.items.remove(item)
-            h3jsw
-=======
+    for item in target_items:                   # loop through every item in the list of target items
+        if target_location.get_item(item):      # check if the item is in the target location
+            pass
+        else:
+            return False                        # return false if it isn't
+    return True                                 # return true if every item is in that location
 
->>>>>>> origin/master
 
 def use_menu():
     """
@@ -224,7 +227,7 @@ if __name__ == "__main__":
     menu = ["look", "score", "quit", "back"]
 
     while not PLAYER.victory:
-        location = WORLD.get_location(PLAYER.x, PLAYER.y)
+        location = WORLD.get_location(PLAYER.x, PLAYER.y)           # create a new location each time
 
         score_change = score(PLAYER, location, "")                  # score player every time player enters new area
 
@@ -249,5 +252,17 @@ if __name__ == "__main__":
 
         else:
             print(do_action(WORLD, PLAYER, location, choice))      # do an action depending on user input
+
+        # WINNING CONDITIONS:
+        target_items = ["food", "5 dollars"]    # target items needed
+        target_location = WORLD.locations[3]    # target location that you need to put items in
+
+        if has_won(target_items, target_location):  # check if the player has won
+            PLAYER.victory = True
+            print("\nCONGRATULATIONS!!! YOU PASSED!!!")
+
+        # LOSING CO
+
+
 
 
