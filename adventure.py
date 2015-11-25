@@ -209,6 +209,9 @@ def use_menu():
         elif user_choice == "score":
             print("\nScore: " + str(PLAYER.score))    # display players score
 
+        elif user_choice == "moves":
+            print("\nTotal moves: " + str(PLAYER.total_moves))    # display players total moves
+
         elif user_choice == "back":             # exit menu
             print("menu closed")
             return
@@ -224,9 +227,9 @@ if __name__ == "__main__":
     WORLD = World("map.txt", "locations.txt", "items.txt")
     PLAYER = Player(1, 1)    # set starting location of player; you may change the x, y coordinates here as appropriate
 
-    menu = ["look", "score", "quit", "back"]
+    menu = ["look", "score", "quit", "back", "moves"]
 
-    while not PLAYER.victory:
+    while not PLAYER.victory and not PLAYER.defeat:                 # added player.defeat
         location = WORLD.get_location(PLAYER.x, PLAYER.y)           # create a new location each time
 
         score_change = score(PLAYER, location, "")                  # score player every time player enters new area
@@ -254,14 +257,31 @@ if __name__ == "__main__":
             print(do_action(WORLD, PLAYER, location, choice))      # do an action depending on user input
 
         # WINNING CONDITIONS:
+        """
+        ****CHANGE TARGET ITEMS AND TARGET LOCATION HERE HERE****
+        """
         target_items = ["food", "5 dollars"]    # target items needed
-        target_location = WORLD.locations[3]    # target location that you need to put items in
+        target_location = WORLD.locations[0]    # target location that you need to put items in
 
         if has_won(target_items, target_location):  # check if the player has won
             PLAYER.victory = True
             print("\nCONGRATULATIONS!!! YOU PASSED!!!")
+            print("It took you " + str(PLAYER.total_moves) + " moves to finish the game")
+            print("Your final score is " + str(PLAYER.score))
 
-        # LOSING CO
+        # LOSING CONDITIONS:
+        """
+        ****CHANGE NUMBER OF ALLOWED MOVES HERE****
+        """
+        allowed_moves = 20
+
+        if PLAYER.total_moves > 8:
+            PLAYER.defeat = True
+            print("\nSORRY YOU FAILED, YOU TOOK TOO LONG AND NOW YOUR EXAM HAS BEGUN WITHOUT YOU!!!")
+            print("It took you " + str(PLAYER.total_moves) + " moves ")
+            print("Your final score is " + str(PLAYER.score))
+
+
 
 
 

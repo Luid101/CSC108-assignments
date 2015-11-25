@@ -17,6 +17,7 @@ class Player:
         self.y = y
         self.inventory = []
         self.victory = False
+        self.defeat = False
         self.score = 0
         self.total_moves = 0
 
