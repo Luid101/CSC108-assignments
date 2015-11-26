@@ -1,7 +1,8 @@
 class Location:
 
     def __init__(self, position, visit_points, brief_description, long_description, available_moves, items):
-        '''Creates a new location.
+        '''
+        Creates a new location.
 
         Data that could be associated with each Location object:
         a position in the world map,
@@ -35,11 +36,11 @@ class Location:
         self.visited = False
         self.points_given = False
 
-    def get_brief_description (self):
+    def get_brief_description(self):
         '''Return str brief description of location.'''
         return self.brief_description
 
-    def get_full_description (self):
+    def get_full_description(self):
         '''Return str long description of location.'''
         return self.long_description
 
@@ -120,7 +121,8 @@ class Location:
 
 class Item:
 
-    def __init__ (self, start, target, target_points, name):
+    def __init__(self, start, target, target_points, name, exchange_item=False, exchange_with="", exchange_accepted="",
+                 exchange_rejected=""):
         '''Create item referred to by string name, with integer "start"
         being the integer identifying the item's starting location,
         the integer "target" being the item's target location, and
@@ -141,6 +143,10 @@ class Item:
         self.target = target
         self.target_points = target_points
         self.placed = False                     # if the item has been placed in its target location already
+        self.exchange_item = exchange_item      # if the item is exchangeable
+        self.exchange_with = exchange_with      # what the item is exchangeable with
+        self.exchange_accepted = exchange_accepted  # text that will be displayed when stuff is exchanged
+        self.exchange_rejected = exchange_rejected  # text that will be displayed when stuff cannot be exchanged
 
     def get_starting_location (self):
         '''Return int location where item is first found.'''
@@ -162,6 +168,27 @@ class Item:
 
         return self.target_points
 
+    def is_exchangable(self):
+        """Return if it is exchangeable"""
+        return self.exchange_item
+
+    def get_exchange_item(self):
+        """ :return: if this item is exchangeable and what they can be exchanged with in a list."""
+        return [self.exchange_item, self.exchange_with]
+
+    def show_trade_text(self, PLAYER, location):
+        """
+        Takes a player object and see's if the player has the object in its inventory,
+        If it does, then drop the object from the player's inventory and add this new object to it.
+        else don't do anything and return the rejected item text.
+        :param PLAYER: a player object from the Player class
+        :return: a string showing if the trade was successful or not
+        """
+        if PLAYER.get_item(self.get_exchange_item()[1]):                # if the player has the item we need
+            return [True, self.exchange_accepted]           # return that the exchange has been accepted
+        else:
+            return [False, self.exchange_rejected]          # return that the exchange has been rejected
+
     def __str__(self):
         """
         :return:the string representation of the item
@@ -171,6 +198,7 @@ class Item:
                                                                                       self.get_target_location(),
                                                                                       self.get_target_points())
         return string
+
 
 class World:
 
@@ -244,12 +272,24 @@ class World:
         for line in file:                                   # create a dictionary of items grouping them by...
                                                             # start_location number
             if '#' not in line:                             # allows us to have comments in the file with '#'
-                item_list = line.strip("\n").split(" ", 3)     # create a list with each line
+                item_list_original = line.strip("\n").split(".")
+                item_list = item_list_original[0].split(" ", 3)        # create a list with each line
+
+                exchange_info = item_list_original[1]
+
+                if exchange_info != '':                                                # if there is data for exchange
+                    exchange_list = item_list_original[1].strip(" ").split(",")        # get data from the original list
+                else:
+                    exchange_list = ["False", "", "", ""]
 
                 item = Item(int(item_list[0]),                   # create an item object from each element in the list
                             int(item_list[1]),
                             int(item_list[2]),
-                            item_list[3])
+                            item_list[3],
+                            exchange_list[0] == "True",              # returns true if the the string there is "True"
+                            exchange_list[1].strip(" "),                        # send exchange_item_name
+                            exchange_list[2].strip(" "),                        # send exchange_accepted text
+                            exchange_list[3].strip(" "))                        # send exchange_rejected text
 
                 if item.get_starting_location() in items:   # put that item into the dict under its target location name
                     items[item.get_starting_location()].append(item)

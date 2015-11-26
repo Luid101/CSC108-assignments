@@ -14,7 +14,7 @@ END
 LOCATION 2
 5
 You are right behind OPH. The road to campus centre is to the North. To the south you can see the RAWC
-You are now outside. Oooh look! Some deer! The road to campus centre is to the North. To the south you can see the RAWC
+You are now outside. Oooh look! Some deer! And your weed guy. The road to campus centre is to the North. To the south you can see the RAWC
 END
 
 # The Rawc / end location

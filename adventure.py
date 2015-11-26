@@ -43,8 +43,20 @@ def parse(raw_input, directions, location):
             item = location.get_item(list_text[1])          # get the item in that location
 
             if item:                                        # if there is an item at that location
-                PLAYER.add_move()                           # increment time
-                return [tag, item]
+
+                if item.is_exchangable():                   # if the item is_exchangeable
+                    return_message = item.show_trade_text(PLAYER, location)
+
+                    if return_message[0]:  # check if the item is an exchange item and return the item needed
+                        tag = "exchangeT"
+                        return [tag, return_message[1], item, item.get_exchange_item()[1]]
+                    else:
+                        tag = "exchangeF"
+                        PLAYER.add_move()                           # increment time
+                        return [tag, return_message[1]]
+                else:
+                    PLAYER.add_move()                           # increment time
+                    return [tag, item]
 
             else:
                 return ['error', 'That item doesnt exist']  # return if the item doesn't exist
@@ -127,6 +139,21 @@ def do_action(World, player, location, action):
             return "You have " + ", ".join(PLAYER.get_inventory()) + "."
         else:
             return "You don't have anything in your inventory."
+
+    elif tag == "exchangeT":            # perform a trade
+
+        result_text = command[1]
+        location_item = command[2]
+        player_item = PLAYER.get_item(command[3])
+
+        PLAYER.remove_item(player_item)                             # drop that item from the players inventory
+        PLAYER.add_item(location_item)                              # add itself to the inventory
+        location.items.remove(location_item)                        # remove itself from that location
+
+        return result_text
+
+    elif tag == "exchangeF":            # return that a trade was not made
+        return command
 
 
 def score(player, location, item):
