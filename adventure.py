@@ -36,7 +36,7 @@ def parse(raw_input, directions, location):
         else:
             return ['error', 'Be more specific. Move where?']
 
-    elif tag == "take":                             # the take command
+    elif tag == "take":                             # the take command. dwd
 
         if len(list_text) >= 2:                             # if the command is the right length
 
