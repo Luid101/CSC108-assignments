@@ -99,3 +99,10 @@ class Player:
 
         self.total_moves += 1
 
+    def get_position(self):
+        """
+        return the position that the player is in, in the map
+        :return:
+        """
+        return [self.x, self.y]
+

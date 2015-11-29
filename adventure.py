@@ -84,6 +84,31 @@ def parse(raw_input, directions, location):
         return ['error', 'You cannot ' + list_text[0]]          # return an invalid command
 
 
+def is_locked_move(player, original_position, move_text):
+    """
+    Check if a position is locked
+    :param player: player object
+    :param original_position: the position made before moving
+    :return:
+    """
+
+    check_location = WORLD.get_location(player.x, player.y)     # create a new location to check
+
+    if check_location.is_locked:                                # if the location is locked and...
+
+        if player.get_item(check_location.key) == False:        # the player does'nt have a key, then return closed_text
+            player.x = original_position[0]                     # reset player locations if it can't move there
+            player.y = original_position[1]
+            return check_location.closed_text
+        else:
+            return check_location.open_text                     # if the player has a key, then return open_text
+
+    else:
+        return move_text
+
+
+
+
 def do_action(World, player, location, action):
     """
     Look at an action in a specific location and modify the world/ player accordingly
@@ -99,20 +124,28 @@ def do_action(World, player, location, action):
 
     if tag == 'move' or tag == 'go':        # if it is a move command
         if command[1] == "north":
+            move_text = "You move north"
+            original_position = PLAYER.get_position()   # get original position
             player.move_north()
-            return "You move north."
+            return is_locked_move(PLAYER, original_position, move_text)
 
         elif command[1] == "south":
+            move_text = "You move south"
+            original_position = PLAYER.get_position()   # get original position
             player.move_south()
-            return "You move south."
+            return is_locked_move(PLAYER, original_position, move_text)
 
         elif command[1] == "east":
+            move_text = "You move east"
+            original_position = PLAYER.get_position()   # get original position
             player.move_east()
-            return "You move east."
+            return is_locked_move(PLAYER, original_position, move_text)
 
         elif command[1] == "west":
+            move_text = "You move west"
+            original_position = PLAYER.get_position()   # get original position
             player.move_west()
-            return "You move west."
+            return is_locked_move(PLAYER, original_position, move_text)
 
     elif tag == "error":
         return command[1] + "."
@@ -153,7 +186,7 @@ def do_action(World, player, location, action):
         return result_text
 
     elif tag == "exchangeF":            # return that a trade was not made
-        return command
+        return command[1]
 
 
 def score(player, location, item):
@@ -291,7 +324,7 @@ if __name__ == "__main__":
         """
         ****CHANGE TARGET ITEMS AND TARGET LOCATION HERE HERE****
         """
-        target_items = ["food", "5 dollars"]    # target items needed
+        target_items = ["food"]    # target items needed
         target_location = WORLD.locations[0]    # target location that you need to put items in
 
         if has_won(target_items, target_location):  # check if the player has won
@@ -306,7 +339,7 @@ if __name__ == "__main__":
         """
         allowed_moves = 20
 
-        if PLAYER.total_moves > 8:
+        if PLAYER.total_moves > allowed_moves:
             PLAYER.defeat = True
             print("\nSORRY YOU FAILED, YOU TOOK TOO LONG AND NOW YOUR EXAM HAS BEGUN WITHOUT YOU!!!")
             print("It took you " + str(PLAYER.total_moves) + " moves ")

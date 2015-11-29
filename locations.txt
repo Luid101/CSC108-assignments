@@ -1,4 +1,15 @@
 # The players room/ starting position
+# to add comments put the hash tag at the beginning
+#
+# How to create a location:
+#
+# Location x        , where x is the number
+# y                 , where y is the amount of points you gain from visiting that location
+# second_message    , where second_message is the message that you see the second, third, fourth... time u enter a room
+# first_message     , where first_message is the message that you see the first time u enter a room
+# is_locked or END  , replace is_locked with True or False, continue only if you want this room to be a locked room
+#
+#
 LOCATION 0
 0
 You are still in your room. Your door is to the south.

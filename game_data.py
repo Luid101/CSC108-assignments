@@ -305,6 +305,8 @@ class World:
                     items[item.get_starting_location()] = []
                     items[item.get_starting_location()].append(item)
 
+        file.close()
+
         return items
 
     def get_available_directions(self, location):
@@ -421,6 +423,8 @@ class World:
             else:
                 locations_final[position] = []
                 locations_final[position] = my_location
+
+        file.close()
 
         return locations_final
 
