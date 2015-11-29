@@ -1,5 +1,6 @@
 # FILL THIS IN WITH ITEM DATA
-# initial_location, target_location, points_received, item_name
+# initial_location, target_location, points_received, item_name.
+0 1 10 room key.
 0 1 10 5 dollars.
 0 1 10 20 dollars.
 1 0 10 food. True, 5 dollars, You give the nice cashier 5 dollars for food, You can't just steal food from colman's

@@ -1,6 +1,7 @@
 class Location:
 
-    def __init__(self, position, visit_points, brief_description, long_description, available_moves, items):
+    def __init__(self, position, visit_points, brief_description, long_description, available_moves, items,
+                 is_locked=False, key="", open_text="", closed_text=""):
         '''
         Creates a new location.
 
@@ -27,6 +28,7 @@ class Location:
         :param items: a list of 'items' eg: [pen, cheat_sheet..]
         '''
 
+        # Default variables
         self.position = position
         self.visit_points = visit_points
         self.brief_description = brief_description
@@ -35,6 +37,12 @@ class Location:
         self.items = items
         self.visited = False
         self.points_given = False
+
+        # The locked attribute variables
+        self.is_locked = is_locked
+        self.key = key
+        self.open_text = open_text
+        self.closed_text = closed_text
 
     def get_brief_description(self):
         '''Return str brief description of location.'''
@@ -315,17 +323,31 @@ class World:
                     x_axis = row.index(location)
                     y_axis = game_map.index(row)
 
-                    if game_map[y_axis - 1][x_axis] != -1:    # check north
-                        possible_directions.append('north')
+                    # The try and catch exceptions help reduce the amount of writing needed to make the map
 
-                    if game_map[y_axis + 1][x_axis] != -1:    # check south
-                        possible_directions.append('south')
+                    try:
+                        if game_map[y_axis - 1][x_axis] != -1:    # check north
+                            possible_directions.append('north')
+                    except IndexError:
+                        pass
 
-                    if game_map[y_axis][x_axis + 1] != -1:    # check east
-                        possible_directions.append('east')
+                    try:
+                        if game_map[y_axis + 1][x_axis] != -1:    # check south
+                            possible_directions.append('south')
+                    except IndexError:
+                        pass
 
-                    if game_map[y_axis][x_axis - 1] != -1:    # check west
-                        possible_directions.append('west')
+                    try:
+                        if game_map[y_axis][x_axis + 1] != -1:    # check east
+                            possible_directions.append('east')
+                    except IndexError:
+                        pass
+
+                    try:
+                        if game_map[y_axis][x_axis - 1] != -1:    # check west
+                            possible_directions.append('west')
+                    except IndexError:
+                        pass
 
         return possible_directions
 
@@ -368,12 +390,31 @@ class World:
             else:
                 items = []
 
+            # factor in the locked variables
+            key = ""
+            open_text = ""
+            closed_text = ""
+
+            if len(element) > 4:                    # check if the list is long enough
+                is_locked = element[4]
+
+                if is_locked != "True":             # if !is_locked change the locked variable to False
+                    is_locked = False
+                else:
+                    is_locked = True
+                    key = element[5]
+                    open_text = element[6]
+                    closed_text = element[7]
+            else:
+                is_locked = False
+
             my_location = Location( position,       # create a location object with the following data
                                     element[1],
                                     element[2],
                                     element[3],
                                     available_directions,
-                                    items)
+                                    items,
+                                    is_locked, key, open_text, closed_text)     # locked variables
 
             if position in locations_final:   # put that location into the dict under its position
                     locations_final[position] = my_location
@@ -408,8 +449,8 @@ class World:
 # testing
 """
 my_world = World()
-location = my_world.get_location(1, 2)
-print(location.available_actions())
+location = my_world.get_location(2, 2)
+print(location.closed_text)
 """
 
 """

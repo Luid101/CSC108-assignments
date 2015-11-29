@@ -36,7 +36,7 @@ def parse(raw_input, directions, location):
         else:
             return ['error', 'Be more specific. Move where?']
 
-    elif tag == "take":                             # the take command. dwd
+    elif tag == "take":                                     # the take command. dwd
 
         if len(list_text) >= 2:                             # if the command is the right length
 
@@ -252,6 +252,10 @@ def use_menu():
 
 if __name__ == "__main__":
     WORLD = World("map.txt", "locations.txt", "items.txt")
+
+    """
+    *** CHANGE THE PLAYERS BEGINNING LOCATION HERE ***
+    """
     PLAYER = Player(1, 1)    # set starting location of player; you may change the x, y coordinates here as appropriate
 
     menu = ["look", "score", "quit", "back", "moves"]
