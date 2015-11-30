@@ -1,5 +1,8 @@
 # FILL THIS IN WITH ITEM DATA
-# initial_location, target_location, points_received, item_name.
+# how to create an item:
+# initial_location, target_location, points_received, item_name. is_exchange_item, item to exchange with,
+# exchange accepted text, exchange denied text
+#
 0 1 10 room key.
 0 1 10 5 dollars.
 0 1 10 20 dollars.

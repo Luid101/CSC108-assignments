@@ -7,7 +7,11 @@
 # y                 , where y is the amount of points you gain from visiting that location
 # second_message    , where second_message is the message that you see the second, third, fourth... time u enter a room
 # first_message     , where first_message is the message that you see the first time u enter a room
-# is_locked or END  , replace is_locked with True or False, continue only if you want this room to be a locked room
+# is_locked or END  , replace is_locked with True or False,if you don't want this room to be locked then use END
+# key               , replace key with the name of the object that you want to unlock the room with
+# open_text         , replace open_text with the text you want to show when the room is unlocked
+# closed_text       , replace closed_text with the text you want to show when the room is locked
+# END               , text that signifies you are done
 #
 #
 LOCATION 0

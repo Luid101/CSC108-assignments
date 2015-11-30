@@ -107,8 +107,6 @@ def is_locked_move(player, original_position, move_text):
         return move_text
 
 
-
-
 def do_action(World, player, location, action):
     """
     Look at an action in a specific location and modify the world/ player accordingly
