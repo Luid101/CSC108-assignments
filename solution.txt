@@ -1,3 +1,11 @@
+take T-card
+inventory
+take 5 dollars
+inventory
 go south
-go north
-go north
+go south
+take food
+inventory
+go south
+go south
+drop T-card

@@ -14,6 +14,8 @@
 # END               , text that signifies you are done
 #
 #
+# The players room/ starting position
+#
 LOCATION 0
 0
 You are still in your room. Your door is to the south.
@@ -22,35 +24,81 @@ END
 
 LOCATION 1
 5
-You are in the hallway of OPH. Your room is to the south. The common room is to the east
-You are in the hallway of OPH. Your room is to the south. The common room is to the east
+The common room is to the west and the door downstairs is in front of you.
+There is a fork in the road... the common room is to the west, the door downstairs directly in front of you.
 END
 
-LOCATION 7
-10
-You are in the common room
-You enter the common room on floor 2
+LOCATION 2
+5
+Stop coding bruh. East to go back to the common room.
+The study room is the best! We would code for hours in this room, good times. East to the Common room.
+True
+room key
+You use your room key to unlock the study room door
+You try the door handle but it's stiff. The study room door is locked.
+END
+
+LOCATION 3
+5
+East to the fork and west to the study room. Oh is that your cheat sheet?
+The Common Room! Community Meetings! Watching The Walking Dead! So happy that Glenn's alive :') East to the fork and west to the study room.
 True
 room key
 You use your room key to unlock the common room door
 You try the door handle but it's stiff. The common room door is locked.
 END
 
-LOCATION 2
-5
-You are in the ground floor lobby of OPH. Your room is to the East. There is a backdoor to the south.
-You are downstairs in the lobby of OPH. The sight of Colman Food makes you want to vomit.
-END
-
-LOCATION 3
-5
-You are right behind OPH. The road to campus centre is to the North. To the south you can see the RAWC
-You are now outside. Oooh look! Some deer! And your weed guy. The road to campus centre is to the North. To the south you can see the RAWC
-END
-
-# The Rawc / end location
 LOCATION 4
 5
-You are at your test centre. The road to outside the campus centre is to the south.
-Welcome to the RAWC where unprepared students come to die. This is the test you have been preparing your whole life for. To the south you can see the campus centre.
+Stop drooling over the food! I know you want your Mango Hurricane but not now! North to go back outside and south to your exam room.
+The Davis building! I love Tim Horton's... and Booster Juice... mmm... *slobbers* North to centre campus and south to your exam room.
 END
+
+LOCATION 5
+5
+Still holding in your vomit. Colman Commons to the east, front door to the west and back doors behind you. North goes back upstairs.
+You are now downstairs on the ground level of OPH. The smell of Colman Commons food makes you want to vomit. Do you dare enter Colman to your east? Or head out the front door to the west or the back door behind you? North goes back upstairs.
+END
+
+LOCATION 6
+5
+Make a decision already. South to campus centre or north back to OPH... not that difficult you dimwit.
+A small little pathway through the forest. Walk south to centre campus and north back to OPH. Is that... Your pencil?
+END
+
+LOCATION 7
+5
+Peeing your pants with anxiety? Go north to escape the agony.
+RAWC GYM C. OMG YOUR EXAM. DO YOU FEEL PREPARED?! THAT'S RIGHT YOU DON'T 'CAUSE DAN ZINGARO MADE IT. North to go back to Davis.
+END
+
+LOCATION 8
+5
+People are staring. Why are you still standing there? Move! South goes to Davis, North goes to the forest pathway. East to CCT
+You have now reached the centre of campus. Food trucks! Duck stop! Wow man! North to the little pathway and south to Davis. CCT is to the east
+END
+
+LOCATION 9
+5
+Quit reminiscing about how well the CS tests went... west to the Library.
+The Information Building! Remember those times we wrote the CS Tests in this very building? I do! They were horrib-- great! West goes back to the Library.
+END
+
+LOCATION 10
+5
+West to CCT, east to IB. Not that hard to remember. Hey look! My room key is here!
+Shhhh! We're in the library now! West goes to CCT and further east to IB.
+END
+
+LOCATION 11
+5
+There isn't much to do here other than buying food so... Left goes back to main lobby. What's that blue thing in the corner...?
+You are now in Colman Commons! The place where no good food exists! Left to the main lobby of OPH.
+END
+
+LOCATION 12
+5
+Stop daydreaming about Shay Fuchs and his infinite knowledge lets go! East to the Library and west to centre campus.
+Woah the CCT Building! I remember proofs being here! Shay Fuchs was the bomb diggity. East to the library and west to go back outside.
+END
+

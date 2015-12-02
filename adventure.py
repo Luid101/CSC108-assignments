@@ -287,7 +287,7 @@ if __name__ == "__main__":
     """
     *** CHANGE THE PLAYERS BEGINNING LOCATION HERE ***
     """
-    PLAYER = Player(1, 1)    # set starting location of player; you may change the x, y coordinates here as appropriate
+    PLAYER = Player(3, 1)    # set starting location of player; you may change the x, y coordinates here as appropriate
 
     menu = ["look", "score", "quit", "back", "moves"]
 
@@ -316,14 +316,17 @@ if __name__ == "__main__":
             use_menu()
 
         else:
+            # print a demarcation
+            print("\n*******************************************"
+                  "****************************************************************")
             print(do_action(WORLD, PLAYER, location, choice))      # do an action depending on user input
 
         # WINNING CONDITIONS:
         """
         ****CHANGE TARGET ITEMS AND TARGET LOCATION HERE HERE****
         """
-        target_items = ["food"]    # target items needed
-        target_location = WORLD.locations[0]    # target location that you need to put items in
+        target_items = ["T-Card", "Cheat sheet", "Pencil"]    # target items needed
+        target_location = WORLD.locations[7]    # target location that you need to put items in
 
         if has_won(target_items, target_location):  # check if the player has won
             PLAYER.victory = True
@@ -342,6 +345,8 @@ if __name__ == "__main__":
             print("\nSORRY YOU FAILED, YOU TOOK TOO LONG AND NOW YOUR EXAM HAS BEGUN WITHOUT YOU!!!")
             print("It took you " + str(PLAYER.total_moves) + " moves ")
             print("Your final score is " + str(PLAYER.score))
+
+
 
 
 

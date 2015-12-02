@@ -3,8 +3,9 @@
 # initial_location, target_location, points_received, item_name. is_exchange_item, item to exchange with,
 # exchange accepted text, exchange denied text
 #
-0 1 10 room key.
 0 1 10 5 dollars.
-0 1 10 20 dollars.
-2 0 10 food. True, 5 dollars, You give the nice cashier 5 dollars for food, You can't just steal food from colman's
-3 0 10 weed. True, 20 dollars, You give your trusty weed guy 20 dollars for some weed, I don't think stealing a drug dealers weed stash is a good idea
+10 0 10 Room key.
+3 4 10 Cheat sheet.
+6 4 10 Pencil.
+11 0 10 Food. True, 5 dollars, You give the nice cashier 5 dollars for food, You can't just steal food from colman's
+11 4 10 T-Card.

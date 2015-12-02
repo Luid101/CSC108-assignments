@@ -426,6 +426,7 @@ class World:
 
         file.close()
 
+        # print(locations_final)
         return locations_final
 
     def get_location(self, x, y):
