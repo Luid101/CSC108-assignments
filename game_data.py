@@ -45,15 +45,36 @@ class Location:
         self.closed_text = closed_text
 
     def get_brief_description(self):
-        '''Return str brief description of location.'''
+        '''
+        Return str brief description of location.
+
+        eg:
+        get_brief_description(self)
+        "lovely"
+
+        '''
         return self.brief_description
 
     def get_full_description(self):
-        '''Return str long description of location.'''
+        '''
+        Return str long description of location.
+
+        eg:
+        get_full_description(self)
+        "lovely"
+
+        '''
         return self.long_description
 
     def get_description(self):
-        """Return a description of the location depending on if the lactation has been visited or not"""
+        """
+        Return a description of the location depending on if the lactation has been visited or not
+
+        eg:
+        get_description(self)
+        "lovely"
+
+        """
         if self.visited:                                                    # if the location has been visited
             return self.brief_description + "\n" + self.show_items()        # print the short description
         else:
@@ -61,7 +82,14 @@ class Location:
             return self.long_description + "\n" + self.show_items()         # else print long description
 
     def show_items(self):
-        """Return a description of all the items in a location"""
+        """
+        Return a description of all the items in a location
+
+        eg:
+        show_items(self)
+        "You can see shoe"
+
+        """
         if len(self.items) > 1:
             string = "You can see "
 

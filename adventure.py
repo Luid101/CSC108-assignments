@@ -11,9 +11,11 @@ def parse(raw_input, directions, location):
     possible commands:
     move direction, where direction is one of the possible directions
 
-    >>> parse("move north",['north'],[])
+    eg:
+    parse("move north",['north'],[])
     ['move', 'north']
-    >>> parse("move south west",['south'],[])
+
+    parse("move south west",['south'],[])
     ['move', 'south', 'west']
 
     """
@@ -92,7 +94,12 @@ def is_locked_move(player, original_position, move_text):
     Check if a position is locked
     :param player: player object
     :param original_position: the position made before moving
-    :return:
+    :return:string
+
+    eg:
+    is_locked_move(PLAYER, original_position, move_text)
+    you cannot go in
+
     """
 
     check_location = WORLD.get_location(player.x, player.y)     # create a new location to check
@@ -118,6 +125,10 @@ def do_action(World, player, location, action):
     :param location: an instance of the location class
     :param action:  a possible action in that location
     :return: the result of that action
+
+    eg:
+    do_action(World, player, location, action)
+    you moved south
     """
 
     command = parse(action, location.available_moves, location)
@@ -207,6 +218,12 @@ def score(player, location, item):
     :param item: an item object, by default the item is False
     :param location: a location object
     :return: how many points were given
+
+    eg:
+    score(player, location, item)
+    you gained 5 points fro entering this area
+    your score is 10
+
     """
 
     if item:                                    # if there was an item passed through the function
@@ -233,6 +250,11 @@ def has_won(target_items, target_location):
     :param target_items: a list of all target items <string_list>
     :param target_location: a list of all items in the target location <string_list>
     :return: True or False depending on if the user has won or not
+
+    eg:
+    has_won(target_items, target_location)
+    True
+
     """
 
     for item in target_items:                   # loop through every item in the list of target items
@@ -246,7 +268,12 @@ def has_won(target_items, target_location):
 def use_menu():
     """
     Controls user interaction on the menu
-    :return:
+    :return:none
+
+    eg:
+    use_menu()
+    menu:...
+
     """
 
     # CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON USER'S CHOICE
