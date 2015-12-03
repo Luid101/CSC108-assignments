@@ -1,11 +1,40 @@
-take T-card
-inventory
 take 5 dollars
 inventory
 go south
+go west
 go south
-take food
+go east
+take Food
+inventory
+take T-Card
+inventory
+go west
+go south
+take Pencil
 inventory
 go south
+go east
+go east
+take Room key
+inventory
+go west
+go west
+go north
+go north
+go north
+go west
+go west
+go east
+take Cheat sheet
+inventory
+go east
 go south
-drop T-card
+go south
+go south
+go south
+go south
+drop T-Card
+inventory
+drop Pencil
+inventory
+drop Cheat sheet

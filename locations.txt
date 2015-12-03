@@ -33,7 +33,7 @@ LOCATION 2
 Stop coding bruh. East to go back to the common room.
 The study room is the best! We would code for hours in this room, good times. East to the Common room.
 True
-room key
+Room key
 You use your room key to unlock the study room door
 You try the door handle but it's stiff. The study room door is locked.
 END
@@ -43,7 +43,7 @@ LOCATION 3
 East to the fork and west to the study room. Oh is that your cheat sheet?
 The Common Room! Community Meetings! Watching The Walking Dead! So happy that Glenn's alive :') East to the fork and west to the study room.
 True
-room key
+Room key
 You use your room key to unlock the common room door
 You try the door handle but it's stiff. The common room door is locked.
 END

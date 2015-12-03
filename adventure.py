@@ -24,6 +24,9 @@ def parse(raw_input, directions, location):
     if tag == "inventory":                      # parse the inventory command
         return [tag, ""]
 
+    if tag == "score":                      # parse the score command
+        return [tag, ""]
+
     elif tag == "move" or tag == "go":          # the move command
 
         if len(list_text) >= 2:                 # if the command is the right length
@@ -171,6 +174,9 @@ def do_action(World, player, location, action):
         else:
             return "You don't have anything in your inventory."
 
+    elif tag == "score":
+        return "Your score is " + str(player.score)
+
     elif tag == "exchangeT":            # perform a trade
 
         result_text = command[1]
@@ -274,6 +280,10 @@ def use_menu():
             print("menu closed")
             return
 
+        elif user_choice == "quit":
+            PLAYER.defeat = True
+            return
+
         use_menu()                              # as long as the user did not exit return to menu
 
     else:
@@ -297,7 +307,9 @@ if __name__ == "__main__":
         score_change = score(PLAYER, location, "")                  # score player every time player enters new area
 
         if int(score_change) > 0:                                   # alert the player to point gains > 0
-            print("You gained " + str(score_change) + " points for entering this area... \n")
+            print("You gained " + str(score_change) + " points for entering this area...")
+            print("Your score is " + str(PLAYER.score) + "\n")                 # display score
+
 
         # ENTER CODE HERE TO PRINT LOCATION DESCRIPTION
         # depending on whether or not it's been visited before,
@@ -338,13 +350,18 @@ if __name__ == "__main__":
         """
         ****CHANGE NUMBER OF ALLOWED MOVES HERE****
         """
-        allowed_moves = 20
+        allowed_moves = 35
 
         if PLAYER.total_moves > allowed_moves:
             PLAYER.defeat = True
             print("\nSORRY YOU FAILED, YOU TOOK TOO LONG AND NOW YOUR EXAM HAS BEGUN WITHOUT YOU!!!")
             print("It took you " + str(PLAYER.total_moves) + " moves ")
             print("Your final score is " + str(PLAYER.score))
+
+        elif PLAYER.defeat:
+            print("\nGOODBYE!")
+            print("You quit after " + str(PLAYER.total_moves) + " moves ")
+            print("Your score is " + str(PLAYER.score))
 
 
 
